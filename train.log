@@ -1,0 +1,44 @@
+2021-02-21 11:50:24,218:INFO: Loading the datasets...
+2021-02-21 11:52:29,254:INFO: Loading the datasets...
+2021-02-21 11:55:44,574:INFO: Loading the datasets...
+2021-02-21 18:26:06,369:INFO: Loading the datasets...
+2021-02-21 18:26:07,691:INFO: - done.
+2021-02-21 18:26:48,015:INFO: Starting training for 10 epoch(s)
+2021-02-21 18:26:48,015:INFO: Epoch 1/10
+2021-02-21 18:29:29,052:INFO: **Done: Batch 100
+2021-02-21 18:32:02,061:INFO: **Done: Batch 200
+2021-02-21 18:34:38,158:INFO: **Done: Batch 300
+2021-02-21 18:37:15,130:INFO: **Done: Batch 400
+2021-02-21 18:39:53,092:INFO: **Done: Batch 500
+2021-02-21 18:42:30,837:INFO: **Done: Batch 600
+2021-02-21 18:45:08,381:INFO: **Done: Batch 700
+2021-02-21 18:47:46,263:INFO: **Done: Batch 800
+2021-02-21 18:50:23,848:INFO: **Done: Batch 900
+2021-02-21 18:53:01,698:INFO: **Done: Batch 1000
+2021-02-21 18:55:39,656:INFO: **Done: Batch 1100
+2021-02-21 18:58:17,417:INFO: **Done: Batch 1200
+2021-02-21 19:00:55,151:INFO: **Done: Batch 1300
+2021-02-21 19:03:32,789:INFO: **Done: Batch 1400
+2021-02-21 19:05:49,710:INFO: Epoch [1], loss: 0.29732738, acc: 0.7721
+2021-02-21 19:06:05,469:INFO: [Classification valid] loss: 0.22212885, acc: 2.4375
+
+
+2021-02-21 19:06:05,679:INFO: Epoch 2/10
+2021-02-21 19:08:45,846:INFO: **Done: Batch 100
+2021-02-21 19:11:23,683:INFO: **Done: Batch 200
+2021-02-21 19:14:01,654:INFO: **Done: Batch 300
+2021-02-21 19:16:39,503:INFO: **Done: Batch 400
+2021-02-21 19:19:17,339:INFO: **Done: Batch 500
+2021-02-21 19:21:55,158:INFO: **Done: Batch 600
+2021-02-21 19:24:32,821:INFO: **Done: Batch 700
+2021-02-21 19:27:10,716:INFO: **Done: Batch 800
+2021-02-21 19:29:48,639:INFO: **Done: Batch 900
+2021-02-21 19:32:19,378:INFO: Loading the datasets...
+2021-02-21 19:32:20,694:INFO: - done.
+2021-02-21 19:32:23,016:INFO: Starting training for 10 epoch(s)
+2021-02-21 19:32:23,016:INFO: Epoch 1/10
+2021-02-21 20:11:08,861:INFO: Epoch [1], loss: 0.29939710, acc: 0.2167
+2021-02-21 20:11:24,240:INFO: [Classification valid] loss: 0.22602696, acc: 0.4500
+
+
+2021-02-21 20:11:28,045:INFO: Epoch 2/10

@@ -1,0 +1,9 @@
+{
+    "learning_rate": 1e-3,
+    "batch_size": 128,
+    "num_epochs": 10, 
+    "num_workers": 8,
+    "closs_weight" : 1,
+    "lr_cent" : 0.5,
+    "feat_dim" : 100
+}
