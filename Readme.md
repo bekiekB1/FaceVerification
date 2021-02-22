@@ -29,3 +29,6 @@ Evaluate model
 ```
 python evaluate.py --data_dir data/face_verf --model_dir expirements/basemodel --restore_file last
 ```
+
+# Template 
+https://github.com/cs230-stanford/cs230-code-examples/tree/master/pytorch/vision
