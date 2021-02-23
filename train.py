@@ -150,7 +150,7 @@ def train_and_evaluate(model, train_dataloader, dev_dataloader, Adam_optimizer,o
         utils.save_checkpoint({'epoch': epoch + 1,
                                'state_dict': model.state_dict(),
                                'Adam_optimizer': Adam_optimizer.state_dict(),
-                               'optimizer_closs': Adam_optimizer.state_dict(),
+                               'optimizer_closs': optimizer_closs.state_dict(),
                                'train_loss': train_losses,
                                 'dev_loss':valid_losses,
                                 'dev_acc': valid_acc,},
