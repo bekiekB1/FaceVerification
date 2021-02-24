@@ -113,7 +113,7 @@ class ResNet(nn.Module):
     #For our problem 
     # For creating the embedding to be passed into the Center Loss criterion
     self.linear_closs = nn.Linear(512, feat_dim, bias=False)
-    self.relu_closs = nn.ReLU(inplace=True)
+    self.relu_closs = nn.LeakyReLU(inplace=True)
 
     #Initialization
     for m in self.modules():
@@ -159,12 +159,11 @@ class ResNet(nn.Module):
 
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
-        output = x
-        x = self.linear_label(x)
-        label_output = x/torch.norm(self.linear_label.weight, dim=1)
+        label_output = self.linear_label(x)
+        label_output = label_output/torch.norm(self.linear_label.weight, dim=1)
 
         # Create the feature embedding for the Center Loss
-        class_output = self.linear_closs(output)
+        class_output = self.linear_closs(x)
         class_output = self.relu_closs(class_output)
 
         return class_output, label_output
