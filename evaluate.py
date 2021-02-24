@@ -181,7 +181,7 @@ if __name__ == '__main__':
     #Verification Validation
     vrf_val_dataset = MyDatasetVerify(file_path,image_path)
 
-    verf_val_loader = torch.utils.data.DataLoader(vrf_val_dataset, batch_size=2, 
+    verf_val_loader = torch.utils.data.DataLoader(vrf_val_dataset, batch_size=200, 
                                              shuffle=False, num_workers = params.num_workers)
 	# Calculate simliarity score
     cosSim_valid, trueScore_valid = testVerify(model, verf_val_loader)
@@ -194,7 +194,7 @@ if __name__ == '__main__':
     #Verification for test
     vrf_test_dataset = MyDatasetVerify(file_path_test,image_path)
 
-    verf_test_loader = torch.utils.data.DataLoader(vrf_test_dataset, batch_size=2, 
+    verf_test_loader = torch.utils.data.DataLoader(vrf_test_dataset, batch_size=200, 
                                              shuffle=False, num_workers = params.num_workers)
     
     cosSim_test, _ = testVerify(model, verf_test_loader)
