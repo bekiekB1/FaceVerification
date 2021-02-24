@@ -85,8 +85,6 @@ def one_epoch(net,loader,optimizer_label,optimizer_center,claf_loss,criterion_cl
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
         torch.cuda.empty_cache()
-        if(i%100 == 99):
-            logging.info(f"**Done: Batch {i+1}")
         loss_avg.update(loss.item())
         del inputs
         del labels
