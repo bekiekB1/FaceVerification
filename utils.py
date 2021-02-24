@@ -131,6 +131,6 @@ def load_checkpoint(checkpoint, model, optimizer1=None,optimizer2 = None):
 
     if optimizer1 and optimizer2:
         optimizer1.load_state_dict(checkpoint['optimizer_Adam_state_dict'])
-        optimizer1.load_state_dict(checkpoint['optimizer_closs_state_dict'])
+        optimizer2.load_state_dict(checkpoint['optimizer_closs_state_dict'])
 
     return checkpoint
