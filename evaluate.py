@@ -167,6 +167,7 @@ if __name__ == '__main__':
     plot_loss_acc("Training Loss",checkpoint["train_loss"])
     plot_loss_acc("Dev Loss",checkpoint["dev_loss"])
     plot_loss_acc("Dev Acc",checkpoint["dev_acc"])
+    lerning_curve(checkpoint["train_loss"],checkpoint["dev_acc"])
 
 
     
