@@ -1,5 +1,8 @@
 # h2p2 - Face Verification 
 
+# TO:Do
+- Evaluate to automatically run on device(cpu or gpu)
+- functional with gui to load two images and verify it
 ## Requirements
 ```
     virtualenv -p python3 .env
