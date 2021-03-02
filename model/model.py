@@ -13,7 +13,7 @@ def conv1x1(in_channels, out_channels, stride = 1):
 
 #For Resnet 50( Imaprove on Performance BottleNeck Instead of Basic Residual)
 class Bottleneck(nn.Module):
-    expansion = 1
+    expansion = 4
     def __init__(self,inplanes,planes,norm_layer = None,stride = 1,downsample = None):
         super(Bottleneck, self).__init__()
         if norm_layer is None:
@@ -103,16 +103,19 @@ class ResNet(nn.Module):
     self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
     self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
 
-    #layer Befor fully connected(avg pool)
+    #layer Befor fully connected(max pool)
     self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
 
     ##original 
     #self.fc = nn.Linear(512, num_classes)
-    self.linear_label = nn.Linear(512, num_classes, bias=False)
-
+    #self.linear_label = nn.Linear(512 * block.expansion, num_classes, bias=False)
+    self.linear_label = nn.Linear(512 * block.expansion, num_classes)
     #For our problem 
     # For creating the embedding to be passed into the Center Loss criterion
-    self.linear_closs = nn.Linear(512, feat_dim, bias=False)
+    #self.linear_closs = nn.Linear(512, feat_dim, bias=False)
+    self.linear_closs = nn.Linear(512*block.expansion, feat_dim)
+    #self.relu_closs = nn.ReLU(inplace=True)  # Test with  relu and without
+    #self.relu_closs = nn.LeakyReLU(inplace=True)  #Maybe only for classification use relu
 
     #Initialization
     for m in self.modules():
@@ -133,14 +136,14 @@ class ResNet(nn.Module):
   def _make_layer(self, block, planes, blocks,stride=1):
     norm_layer = self._norm_layer
     downsample = None
-    if stride != 1:
+    if stride != 1 or self.inplanes != planes * block.expansion:
             downsample = nn.Sequential(
-                conv1x1(self.inplanes, planes, stride),
-                norm_layer(planes),
+                conv1x1(self.inplanes, planes*block.expansion, stride),
+                norm_layer(planes*block.expansion),
             )
     layers = []
     layers.append(block(self.inplanes, planes, norm_layer,stride,downsample))
-    self.inplanes = planes
+    self.inplanes = planes * block.expansion
     for _ in range(1, blocks):
       layers.append(block(self.inplanes, planes,norm_layer=norm_layer))
     return nn.Sequential(*layers)
@@ -158,11 +161,13 @@ class ResNet(nn.Module):
 
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
+        #output = x.detach().clone()
         label_output = self.linear_label(x)
-        label_output = label_output/torch.norm(self.linear_label.weight, dim=1)
+        #label_output = label_output/torch.norm(self.linear_label.weight, dim=1)
 
         # Create the feature embedding for the Center Loss
         class_output = self.linear_closs(x)
+        #class_output = self.relu_closs(class_output)
 
         return class_output, label_output
 
